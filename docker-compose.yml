@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  scrapy_service:
+    build:
+      context: .
+      target: dev
+      args:
+        - ENVIRONMENT=development
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
