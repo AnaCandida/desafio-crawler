@@ -5,11 +5,33 @@ services:
     build:
       context: .
       target: dev
-      args:
-        - ENVIRONMENT=development
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     stdin_open: true
     tty: true
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: devdb
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_PORT: 5432
+      TZ: America/Sao_Paulo
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: devdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+volumes:
+  dev-db-data:
