@@ -48,20 +48,32 @@ O MVP + funcionalidades adicionais do desafio implementadas:
 
 ## Execução e Agendamento do IMDB Spider
 
-### Agendamento(default):
-Por padrão, o container executará automaticamente o script para agendamento do spider.
-Ele permitirá que você escolha o dia da semana e a hora para o agendamento.
+### Agendamento:
+O script `run_schedule.py` permitirá que você escolha o dia da semana e a hora para o agendamento do spider.
+
+1. Você pode acessar o shell do container:
+    ```
+    docker exec -it /desafio-crawler-scrapy_service-1 /bin/sh
+    ```
+
+2. Rodar o seguinte comando:
+
+  ```
+  python run_schedule.py
+  ```
 
 >  **Nota:** Para manter o agendamento ativo, é crucial manter o script em execução. Caso o script seja encerrado, o agendamento será perdido.
->Isso inclui reinicializações do container. A implementação dessa persistência pode ser considerada como uma funcionalidade futura.
+>Isso inclui reinicializações do container.
 
 
-### Se preferir rodar o spider uma única vez, utilize o seguinte comando:
+###  Execução única:
 
-```
-docker-compose run scrapy_service run_once
+Se preferir rodar o spider uma única vez, utilize o seguinte comando dentro do sheel do container:
 
-```
+  ```
+  python run_schedule.py run_once
+
+  ```
 
 
 
@@ -72,8 +84,10 @@ Este projeto proporcionou uma imersão mais aprofundada nos conceitos de web scr
 Implementações Realizadas:
 
 - Middleware customizado para rotação de user-agent e ajudar a evitar bloqueios
-- Pipeline customizada para integração com banco de dados Postgres
-- Salvamento em lote no banco de dados para melhorar performance
+- Pipeline customizada para integração com banco de dados Postgres.Isso facilita a manutenção e a reusabilidade do código, separando as preocupações de extração e armazenamento.
+- Class Item para defintir a estrutura dos dados extraídos e manter a consistência.
+- ItemLoader para criar e limpar os dados extraídos. Uso de MapCompose, Takefirt e  Compose.
+- Salvamento em lote no banco de dados para reduzir a sobrecarga de operações de banco de dados, melhorando a performance geral.
 - Metodo para evitar o carregamento de recursos desnecessários, como imagens e solicitações POST, otimizando assim a performance
 - Agendamento interativo do usuario via terminal
 
