@@ -15,8 +15,6 @@ LOG_SHORT_NAMES = False
 LOG_STDOUT = True
 LOG_FORMAT = "%(asctime)s [%(name)s] %(levelname)s: %(message)s"
 
-TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
-
 
 COOKIES_ENABLED = False
 
@@ -33,11 +31,19 @@ USER_AGENTS = [
 
 DOWNLOADER_MIDDLEWARES = {
     "imdb_crawler.middlewares.UARotatorMiddleware": 400,
-    "scrapeops_scrapy.middleware.retry.RetryMiddleware": 550,
     "scrapy.downloadermiddlewares.retry.RetryMiddleware": None,
 }
+
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+}
+
+PLAYWRIGHT_BROWSER_TYPE = "chromium"
+# PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT = 10000
+
 FEEDS = {
-    "movies.json": {
+    "outputs/movies.json": {
         "format": "json",
         "encoding": "utf8",
         "store_empty": False,
@@ -53,12 +59,6 @@ DEFAULT_REQUEST_HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "pt-br",
 }
-
-
-# EXTENSIONS = {
-#     "scrapeops_scrapy.extension.ScrapeOpsMonitor": 500,
-# }
-
 
 ITEM_PIPELINES = {
     "imdb_crawler.pipelines.ImdbCrawlerPipeline": 100,
