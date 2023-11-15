@@ -1,9 +1,10 @@
-# Welcome to desafio-crawler 👋
 [![Python Version](https://img.shields.io/badge/python-3.11-blue)](#)
 [![Scrapy Version](https://img.shields.io/badge/Scrapy-2.11.0-blue)](#)
 [![PostgreSQL Version](https://img.shields.io/badge/PostgreSQL-13-blue)](https://www.postgresql.org/)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
+
+# Welcome to desafio-crawler 👋
 
 Este é um projeto de raspagem de dados para o site IMDB, usando a biblioteca Scrapy.
 Ele foi construído a partir das orientações do desafio da  [beeMôn](https://github.com/beemontech/desafio-crawler#beem%C3%B4n) 🐝
