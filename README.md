@@ -36,7 +36,7 @@ O MVP + funcionalidades adicionais do desafio implementadas:
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/AnaCandida/Agenda_Python_Django.git
+    git clone https://github.com/AnaCandida/desafio-crawler.git
     ```
 
 2. Navegue até a pasta do projeto e execute:
