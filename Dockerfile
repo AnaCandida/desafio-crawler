@@ -17,14 +17,13 @@ FROM base AS dev
 RUN poetry install --no-root
 WORKDIR /code/imdb_crawler
 # ENTRYPOINT ["tail", "-f", "/dev/null"]
-CMD ["python", "run_spider.py"]
+
 
 
 # PROD
 FROM base AS release
 RUN poetry install --no-dev --no-root
 WORKDIR /code/imdb_crawler
-# ENTRYPOINT ["tail", "-f", "/dev/null"]
-CMD ["python", "run_spider.py"]
+
 
 
