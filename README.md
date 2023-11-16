@@ -32,7 +32,7 @@ O MVP + funcionalidades adicionais do desafio implementadas:
 - [sqlalchemy](https://www.sqlalchemy.org/) (^2.0.23)
 
 ## Executando o projeto:
-  >  **Nota:**  Certifique-se de ter o Docker e o Docker Compose instalados.Veja a [documentação](https://docs.docker.com/get-docker/), caso ainda não os tenha instalado.
+  >  **IMPORTANTE:**  Certifique-se de ter o Docker e o Docker Compose instalados.Veja a [documentação](https://docs.docker.com/get-docker/), caso ainda não os tenha instalado.
 
 1. Clone o repositório:
 
@@ -46,6 +46,7 @@ O MVP + funcionalidades adicionais do desafio implementadas:
     docker-compose up -d --build  OU docker compose up -d --build
     ```
 
+  >**Nota:** O build pode demorar um pouco na primeira execução pois a lib scrapy-playwright requer algumas dependencias adicionais
 
 ## Execução e Agendamento do IMDB Spider
 

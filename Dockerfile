@@ -14,15 +14,17 @@ COPY . /code/
 
 # DEV
 FROM base AS dev
-RUN poetry install --no-root
+RUN poetry install --no-root && \
+    playwright install --with-deps chromium
 WORKDIR /code/imdb_crawler
-# ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
 
 
 
 # PROD
 FROM base AS release
-RUN poetry install --no-dev --no-root
+RUN poetry install --no-dev --no-root \
+    playwright install --with-deps chromium
 WORKDIR /code/imdb_crawler
 
 
