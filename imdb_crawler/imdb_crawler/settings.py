@@ -1,5 +1,3 @@
-# Scrapy settings for imdb_crawler project
-import logging
 
 BOT_NAME = "imdb_crawler"
 SPIDER_MODULES = ["imdb_crawler.spiders"]

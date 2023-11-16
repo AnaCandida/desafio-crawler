@@ -1,8 +1,6 @@
-# database_utils.py
 import os
 
 import pandas as pd
-from sqlalchemy import create_engine
 
 
 def query_db_and_create_dataframe():
@@ -12,7 +10,6 @@ def query_db_and_create_dataframe():
     db_password = os.getenv("DB_PASSWORD", "sua_senha")
     db_port = os.getenv("DB_PORT", "sua_porta")
 
-    # Criar URI do banco de dados para SQLAlchemy
     db_uri = (
         f"postgresql+psycopg2://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
     )
