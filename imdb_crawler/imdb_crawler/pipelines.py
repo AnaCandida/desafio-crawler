@@ -3,7 +3,6 @@ import os
 
 import psycopg2
 from itemadapter import ItemAdapter
-from psycopg2 import DataError, IntegrityError, OperationalError
 
 
 class ImdbCrawlerPipeline:
@@ -78,9 +77,6 @@ class SavingToPostgresPipeline(object):
         except OperationalError as operational_error:
             spider.logger.error(f"OperationalError: {operational_error}")
             self.connection.rollback()
-
-        else:
-            self.connection.commit()
 
     def close_spider(self, spider):
         try:
